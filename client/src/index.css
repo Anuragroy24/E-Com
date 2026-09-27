@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-forest-600 px-5 py-2.5
+           text-sm font-semibold text-white shadow-soft transition hover:bg-forest-700
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-5 py-2.5
+           text-sm font-semibold text-ink transition hover:border-forest-600 hover:text-forest-700;
+  }
+  .btn-danger-ghost {
+    @apply text-sm font-semibold text-rust-600 transition hover:text-rust-700;
+  }
+
+  /* Form controls */
+  .field-label {
+    @apply flex flex-col gap-1.5 text-sm font-medium text-ink/70;
+  }
+  .input-field {
+    @apply w-full rounded-lg border border-sand-300 bg-white px-3.5 py-2.5 text-sm text-ink
+           placeholder:text-ink/35 focus:border-forest-500 focus:outline-none
+           focus:ring-2 focus:ring-forest-500/15;
+  }
+  .field-error {
+    @apply text-xs font-medium text-rust-600;
+  }
+
+  /* Surfaces */
+  .card-surface {
+    @apply rounded-2xl border border-sand-200 bg-white shadow-soft;
+  }
+  .banner-error {
+    @apply rounded-xl border border-rust-500/20 bg-rust-50 px-4 py-3 text-sm font-medium text-rust-700;
+  }
+  .banner-success {
+    @apply rounded-xl border border-forest-500/20 bg-forest-50 px-4 py-3 text-sm font-medium text-forest-700;
+  }
+}
