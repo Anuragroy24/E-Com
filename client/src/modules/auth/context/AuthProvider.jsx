@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../shared/apiConfig";
 
 const AuthContext = createContext();
 
@@ -35,14 +36,14 @@ export default function AuthProvider({ children }) {
         async function bootstrap() {
             try {
                 const res = await axios.post(
-                    "/api/auth/refresh-token",
+                    `${API_BASE_URL}/auth/refresh-token`,
                     {},
                     { withCredentials: true }
                 );
 
                 setAccessToken(res.data.accessToken);
 
-                const meRes = await axios.get("/api/auth/me", {
+                const meRes = await axios.get(`${API_BASE_URL}/auth/me`, {
                     headers: { Authorization: `Bearer ${res.data.accessToken}` },
                     withCredentials: true
                 });

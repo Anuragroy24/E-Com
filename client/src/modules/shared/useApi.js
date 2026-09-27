@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useAuthContext } from "../auth/context/AuthProvider";
+import { API_BASE_URL } from "./apiConfig";
 
 /**
  * A pre-configured axios instance that:
@@ -14,7 +15,7 @@ export default function useApi() {
     const authContext = useAuthContext();
 
     const api = axios.create({
-        baseURL: "/api",
+        baseURL: API_BASE_URL,
         withCredentials: true
     });
 
@@ -39,7 +40,7 @@ export default function useApi() {
 
                 try {
                     const refreshRes = await axios.post(
-                        "/api/auth/refresh-token",
+                        `${API_BASE_URL}/auth/refresh-token`,
                         {},
                         { withCredentials: true }
                     );
